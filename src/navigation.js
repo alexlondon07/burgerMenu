@@ -1,10 +1,11 @@
 import React from 'react';
 import {  StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs'
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 import Products from './product';
 import ProductsDetail from './product-detail';
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import { SideMenu } from './side-menu';
 
 //Tabs
 import Tab1 from './tab-1';
@@ -13,6 +14,7 @@ import Tab3 from './tab-3';
 
 //Alone
 import Settings from './settings';
+
 
     const iconTab1 = (<Icon name="user-circle" size={24} color="#999"/>);
     const iconTab2 = (<Icon name="rocket" size={24} color="#999"/>);
@@ -48,7 +50,8 @@ import Settings from './settings';
                 tabBarIcon: iconTab3
             }  
         },
-    },{
+    },
+    {
         order: ['Tab1', 'Tab2', 'Tab3'],
         initialRouteName: 'Tab2',
         tabBarOptions:{
@@ -67,6 +70,7 @@ import Settings from './settings';
         Tabs: { screen: Tabs },
         Settings: { screen: Settings },
     },{
-        drawerWidth: 200
+        drawerWidth: 300,
+        contentComponent: SideMenu
     }
     );
