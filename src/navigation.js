@@ -1,5 +1,5 @@
 import React from 'react';
-import {  StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
+import {  StackNavigator, TabNavigator, DrawerNavigator, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
@@ -15,7 +15,11 @@ import Tab3 from './tab-3';
 //Alone
 import Settings from './settings';
 
+//Auth
+import Auth from './auth';
+import AuthLoading from './authLoading';
 
+    //Iconos de nuestros Tabs
     const iconTab1 = (<Icon name="user-circle" size={24} color="#999"/>);
     const iconTab2 = (<Icon name="rocket" size={24} color="#999"/>);
     const iconTab3 = (<Icon name="address-card" size={24} color="#999"/>)
@@ -72,5 +76,12 @@ import Settings from './settings';
     },{
         drawerWidth: 300,
         contentComponent: SideMenu
-    }
-    );
+    });
+
+    export const SwitchNavigator = createSwitchNavigator({
+        AuthScreen: Auth,
+        AuthLoadingScreen: AuthLoading,
+        App: Drawer
+    },{
+        initialRouteName: 'AuthLoadingScreen'
+    });
