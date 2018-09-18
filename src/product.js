@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button , AsyncStorage} from 'react-native';
 
 class Products extends Component {
   constructor(props) {
     super(props);
   }
 
+  closeSession = async () =>{
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Auth')
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -17,6 +21,10 @@ class Products extends Component {
           <Button
             onPress={ () => this.props.navigation.openDrawer() } 
             title="Open Menu"
+            color='white'/>
+          <Button
+            onPress={ this.closeSession } 
+            title="Close session"
             color='white'/>
       </View>
     );

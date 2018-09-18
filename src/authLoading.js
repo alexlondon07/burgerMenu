@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import { View,  ActivityIndicator,StyleSheet } from 'react-native';
+import { View,  ActivityIndicator,StyleSheet, AsyncStorage } from 'react-native';
 
 class AuthLoading extends Component {
   constructor(props) {
     super(props);
+
     this.validateToken();
   }
   
-  validateToken = () =>{
+  validateToken = async () =>{
+    
+    const token = await AsyncStorage.getItem('token');
+    
     setTimeout ( ()=>{
-      this.props.navigation.navigate('App');
+      this.props.navigation.navigate(token ? 'App': 'Auth');
     },2000);
   }
 

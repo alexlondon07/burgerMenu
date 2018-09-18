@@ -79,9 +79,9 @@ import AuthLoading from './authLoading';
     });
 
     export const SwitchNavigator = createSwitchNavigator({
-        AuthScreen: Auth,
-        AuthLoadingScreen: AuthLoading,
+        Auth: Auth,
+        AuthLoading: AuthLoading,
         App: Drawer
     },{
-        initialRouteName: 'AuthLoadingScreen'
+        initialRouteName: 'AuthLoading'
     });
